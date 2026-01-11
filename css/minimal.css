@@ -1,0 +1,140 @@
+/* ================================
+   IMAGE ORACLE — FINAL MINIMAL THEME
+   ================================ */
+
+html, body {
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  font-family: "Times New Roman", Times, serif !important;
+  color: #111 !important;
+}
+
+/* Remove original gradients / themes */
+.main,
+#container,
+#header {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Hide everything from old UI */
+#pageTitle,
+#moreFiltersLabel,
+#moreFiltersContent,
+#enableCookiesBox,
+#downloadButtonHolder,
+#cancelSearch,
+#imagesReturned,
+#addlInfo,
+.configSection .sectionLabel,
+.configSection .sectionContent .btn,
+#randomTextTag,
+#clearTextTagBox,
+.imageDetails {
+  display: none !important;
+}
+
+/* Keep Clear Images visible */
+#clearButtonHolder {
+  display: block !important;
+}
+
+/* ---------- Question Area ---------- */
+
+#header {
+  position: relative !important;
+  z-index: 2 !important;
+  padding: 0 !important;
+}
+
+/* Your oracle UI block */
+#oracleUI {
+  padding: 90px 24px 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 18px !important;
+}
+
+/* Question sentence */
+#oracleLine {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: center !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+  font-size: 34px !important;
+}
+
+/* Inputs */
+#textTagBox,
+#numImagesBox {
+  border: none !important;
+  border-bottom: 1px solid #111 !important;
+  background: transparent !important;
+  font-size: 34px !important;
+  outline: none !important;
+  text-align: center !important;
+}
+
+#textTagBox {
+  width: min(420px, 60vw) !important;
+}
+
+#numImagesBox {
+  width: 96px !important;
+}
+
+/* Buttons */
+#oracleButtons {
+  display: flex !important;
+  gap: 12px !important;
+}
+
+#oracleButtons .btn,
+#getImages,
+#clearImages {
+  background: #111 !important;
+  border: 1px solid #111 !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  padding: 12px 18px !important;
+  font-size: 18px !important;
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+/* ---------- Image Area ---------- */
+
+#imageHolder {
+  padding: 60px 24px 80px !important;   /* this fixes the hidden images */
+  background: #ffffff !important;
+}
+
+/* Disable masonry chaos */
+#images {
+  position: static !important;
+  width: 100% !important;
+}
+
+/* Each image block */
+.singleImageHolder {
+  position: static !important;
+  float: none !important;
+  width: min(620px, 90vw) !important;
+  margin: 28px auto !important;
+  display: block !important;
+}
+
+/* Make images fit nicely */
+.singleImageHolder img,
+.singleImageHolder video {
+  max-height: 70vh !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+}

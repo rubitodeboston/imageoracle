@@ -1,0 +1,798 @@
+@charset "utf-8";
+body, html
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+h1
+{
+	margin: 0 0 0.25em;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+#header
+{
+	background: #dbe7ec; /* Old browsers */
+	background: -moz-linear-gradient(top, #dbe7ec 0%, #b3dbec 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #dbe7ec 0%,#b3dbec 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #dbe7ec 0%,#b3dbec 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbe7ec', endColorstr='#b3dbec',GradientType=0 ); /* IE6-9 */
+	z-index: 50;
+}
+.singleImageHolder .imageTextHolder .moreInfoSection
+{
+	display: none;
+}
+.moreInfoLink
+{
+	display: none;
+}
+.singleImageHolder .imageTextHolder .moreInfoLink
+{
+	display: block;
+}
+.singleImageHolder .imageTextHolder
+{
+	padding: 10px 15px 50px;
+}
+.nowrap
+{
+	
+}
+#pageTitle
+{
+	padding: 0 15px;
+}
+p
+{
+	padding-bottom: 1em;
+	margin: 0;
+}
+#imagesReturned
+{
+	display: none;
+	padding: 0 15px 15px;
+}
+#moreFiltersLabel
+{
+	font-weight: bold;
+}
+#moreFiltersLabel.expanded
+{
+	background-color: #FFDA84;
+}
+#moreFiltersLabel.expanded:hover
+{
+	background-color: #ffd470;
+}
+#getImages, #downloadImages, #clearImages, .colorLink, #cancelSearch
+{
+	cursor: pointer;
+}
+#getImages.disabled
+{
+	cursor: wait;
+}
+#cancelSearch.disabled
+{
+	cursor: default;
+}
+#downloadImages, #clearImages, #getImages, #cancelSearch
+{
+	float: none;
+}
+.buttonHolder
+{
+	display: block;
+	float: none;
+	margin: 10px 0;
+}
+.buttonHolder:last-child
+{
+	margin-bottom: 0;
+}
+#buttons
+{
+	padding-bottom: 10px;
+}
+#addlInfoShowHide
+{
+	font-style: italic;
+}
+.configSection, #moreFiltersContent
+{
+	display: block;
+}
+.labelText
+{
+	display: inline;
+}
+#getImages
+{
+	font-weight: bold;
+	font-size: 1.5em;
+}
+.sectionContent, #addlInfoContent, #moreFiltersContent
+{
+	padding: 10px;
+	background-color: #eeeeee;
+	display: none;
+}
+#moreFiltersContent
+{
+	padding: 0;
+	background-color: transparent;
+}
+#addlInfoContent
+{
+	padding-top: 1em;
+	padding-bottom: 0;
+}
+.upArrow, .downArrow
+{
+	display: inline;
+	float: right;
+}
+.singleImageHolder img
+{
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	display: inline-block;
+}
+.message
+{
+	padding: 15px;
+}
+.label
+{
+	display: inline;
+}
+#customSizeSection div
+{
+	padding: 3px 0;
+}
+#textTagBox, #useridBox
+{
+	margin: 0 0 5px 0;
+}
+.colorBoxCheck
+{
+	display: none;
+}
+.colorBoxEmpty
+{
+	display: none;
+}
+.checked .colorBoxCheck
+{
+	display: inline-block;
+}
+.unchecked .colorBoxEmpty
+{
+	display: inline-block;
+}
+.colorLink
+{
+	border: 1px solid #9a9a9a;
+	height: 20px;
+	width: 20px;
+	display: inline-block;
+	text-decoration: none;
+	margin-right: 10px;
+	text-align: center;
+	line-height: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #000000;
+	margin-bottom: 10px;
+	border-radius: 3px;
+}
+#palePinkLink
+{
+	background-color: #ff9f9c;
+}
+#pinkLink
+{
+	background-color: #f52394;
+}
+#redLink
+{
+	background-color: #ff2000;
+}
+#darkOrangeLink
+{
+	background-color: #a24615;
+}
+#orangeLink
+{
+	background-color: #ff7c00;
+}
+#lemonYellowLink
+{
+	background-color: #fffa00;
+}
+#schoolBusYellowLink
+{
+	background-color: #ffcf00;
+}
+#greenLink
+{
+	background-color: #90e200;
+}
+#darkLimeGreenLink
+{
+	background-color: #00ab00;
+}
+#cyanLink
+{
+	background-color: #00b2d4;
+}
+#blueLink
+{
+	background-color: #0062c6;
+}
+#violetLink
+{
+	background-color: #8c20ba;
+}
+#whiteLink
+{
+	background-color: #ffffff;
+}
+#grayLink
+{
+	background-color: #7c7c7c;
+}
+#blackLink
+{
+	background-color: #000000;
+	color: #ffffff;
+}
+.group:after, .sectionLabel:after
+{
+	content: "";
+	display: table;
+	clear: both;
+}
+#searchConfigOptions, #displayConfigOptions, #addlInfoContent
+{
+	display: none;
+}
+#searchConfigOptions.expanded, #displayConfigOptions.expanded, #addlInfoContent.expanded
+{
+	display: block;
+}
+
+.form-control
+{
+	display: inline-block;
+	width: auto;
+}
+
+.form-control + label
+{
+	padding-left: 5px;
+}
+
+/* checkboxes and radio buttons, from paper2 */
+
+.form-check,
+.form-check-radio {
+  margin-bottom: 12px;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+.form-check:last-child, .form-check-radio:last-child,
+.form-check.last, .form-check-radio.last
+{
+	margin-bottom: 0;
+}
+.form-check-label
+{
+	cursor: pointer;
+}
+
+.form-check.disabled .form-check-label {
+  color: #999999;
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.form-check input[type="checkbox"],
+.form-check-radio input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+}
+
+.form-control input[type="checkbox"]:disabled + .form-check-sign::before,
+.checkbox input[type="checkbox"]:disabled + .form-check-sign::after {
+  cursor: not-allowed;
+}
+
+.form-check .form-check-label input[type="checkbox"]:disabled + .form-check-sign,
+.form-check-radio input[type="radio"]:disabled + .form-check-sign {
+  pointer-events: none !important;
+}
+
+.form-check-radio .form-check-label,
+.form-check .form-check-label
+{
+  padding-left: 2rem;
+}
+.form-check-radio.disabled .form-check-label {
+  color: #999999;
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.form-check-radio .form-check-sign::before {
+  font-family: 'Font Awesome 5 Free';
+  content: "\f111";
+  font-size: 22px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  position: absolute;
+  opacity: .50;
+  left: 5px;
+  top: -5px;
+}
+.form-check-radio .form-check-sign.withBox::before
+{
+	top: 3px;
+}
+
+.form-check .form-check-sign::before {
+  font-family: 'Font Awesome 5 Free';
+  content: "\f0c8";
+  font-size: 22px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  position: absolute;
+  opacity: .50;
+  left: 5px;
+  top: -5px;
+}
+
+.form-check-radio input[type="radio"] ~ .form-check-sign:after,
+.form-check-radio input[type="radio"],
+.form-check input[type="checkbox"] ~ .form-check-sign:after,
+.form-check input[type="checkbox"]
+{
+  opacity: 0;
+  content: " ";
+  display: block;
+}
+
+.form-check-radio input[type="radio"]:checked ~ .form-check-sign::after {
+  font-family: 'Font Awesome 5 Free';
+  content: "\f192";
+  top: -5px;
+  position: absolute;
+  left: 5px;
+  opacity: 1;
+  font-size: 22px;
+}
+
+.form-check-radio input[type="radio"]:checked ~ .form-check-sign.withBox::after {
+	top: 3px;
+}
+
+.form-check input[type="checkbox"]:checked ~ .form-check-sign::after {
+  font-family: 'Font Awesome 5 Free';
+  content: "\f14a";
+  top: -5px;
+  position: absolute;
+  left: 5px;
+  opacity: 1;
+  font-size: 22px;
+}
+
+.form-check-radio input[type="radio"]:checked ~ .form-check-sign::after,
+.form-check input[type="checkbox"]:checked ~ .form-check-sign::after
+{
+  opacity: 1;
+}
+
+.form-check-radio input[type="radio"]:checked ~ .form-check-sign::after,
+.form-check input[type="checkbox"]:checked ~ .form-check-sign::after
+{
+  opacity: 1;
+}
+
+.form-check-radio input[type="radio"]:disabled ~ .form-check-sign::before,
+.form-check-radio input[type="radio"]:disabled ~ .form-check-sign::after,
+.form-check input[type="checkbox"]:disabled ~ .form-check-sign::before,
+.form-check input[type="checkbox"]:disabled ~ .form-check-sign::after
+{
+  color: #999999;
+}
+
+.form-check-label.active
+{
+	color: #037190;
+}
+.form-check #enableCookiesLabel .form-check-sign::before,
+.form-check #enableCookiesLabel .form-check-sign::after
+{
+	top: 5px;
+}
+.form-check #enableCookiesLabel
+{
+	padding-left: 2rem;
+}
+
+/* End checkboxes and radio buttons */
+
+/* Buttons */
+.btn, .btn:focus, .btn:active, .btn.active, .btn:active:focus, .btn.active:focus, .open > .btn.dropdown-toggle, .open > .btn.dropdown-toggle:focus,
+.btn-outline-primary, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .open > .btn-outline-primary.dropdown-toggle, .open > .btn-outline-primary.dropdown-toggle:focus
+{
+	color: #037190;
+	border-color: #037190;
+	transition: none;
+	box-shadow: none;
+	background-color: rgba(255, 250, 238, 1);
+	padding: 10px;
+	border-width: 1px;
+	opacity: 1;
+	width: 100%;
+	text-align: left;
+}
+.btn:hover, .btn:active:hover, .btn.active:hover, .open > .btn.dropdown-toggle:hover,
+.btn-outline-primary:hover, .btn-outline-primary:active:hover, .btn-outline-primary.active:hover, .open > .btn-outline-primary.dropdown-toggle:hover
+{
+	transition: none;
+	color: #025C75;
+	border-color: #025C75;
+	box-shadow: none;
+	background-color: rgba(255, 245, 223, 1);
+	opacity: 1;
+}
+.btn.btn-fill, .btn.btn-fill:focus, .btn.btn-fill:active, .btn.btn-fill.active, .open > .btn.btn-fill.dropdown-toggle
+{
+	background-color: #037190;
+	box-shadow: none;
+	opacity: 1;
+}
+.btn.btn-fill:hover
+{
+	background-color: #025C75;
+	box-shadow: none;
+	opacity: 1;
+}
+.btn.btn-fill.disabled, .btn.btn-fill.disabled:hover, .btn.btn-fill.disabled:focus, .btn.btn-fill.disabled:active,
+.clearButton.btn.btn-fill.disabled, .clearButton.btn.btn-fill.disabled:hover, .clearButton.btn.btn-fill.disabled:focus, .clearButton.btn.btn-fill.disabled:active
+{
+	cursor: not-allowed;
+	background-color: #333333;
+	border-color: #333333;
+	color: #ffffff;
+}
+.clearButton.btn.btn-fill, .clearButton.btn.btn-fill:focus, .clearButton.btn.btn-fill:active, .clearButton.btn.btn-fill.active
+{
+	background-color: #5e1a1a;
+	border-color: #5e1a1a;
+	box-shadow: none;
+	opacity: 1;
+}
+.clearButton.btn.btn-fill:hover
+{
+	background-color: #511717;
+	border-color: #511717;
+	box-shadow: none;
+	opacity: 1;
+}
+/* End buttons */
+
+.input-group-addon
+{
+	border-radius: 0 4px 4px 0;
+	line-height: 36px;
+	border-color: #9a9a9a;
+}
+.form-control
+{
+	border-color: #9a9a9a;
+}
+.dropdown-menu, .bootstrap-datetimepicker-widget.dropdown-menu
+{
+	-webkit-box-shadow: 3px 3px 15px 2px rgba(0,0,0,0.4);
+	-moz-box-shadow: 3px 3px 15px 2px rgba(0,0,0,0.4);
+	box-shadow: 3px 3px 15px 2px rgba(0,0,0,0.4);
+}
+.dateLabel
+{
+	display: block;
+	margin-top: 1em;
+}
+.input-group.date
+{
+	position: static;
+	display: block;
+}
+.form-control.datetimepicker, .input-group>.form-control.datetimepicker:not(:first-child), .input-group .form-control.datetimerpicker:last-child
+{
+	position: static;
+	border-left: 1px solid #9a9a9a;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	width: 100%;
+}
+.form-group
+{
+	margin-bottom: 0;
+}
+.progress
+{
+	height: 20px;
+	background-color: #fffaee;
+}
+.progress-bar
+{
+	background-color: #025C75;
+	transition: none;
+	-moz-transition: none;
+	-webkit-transition: none;
+}
+#imageSizeChooser
+{
+	display: none;
+}
+.dateLabelSmall
+{
+	display: inline-block;
+	font-size: 0.8rem;
+}
+.dateLabelLarge
+{
+	display: inline-block;
+}
+@media screen and (min-width: 600px)
+{
+	/* Buttons */
+	.btn, .btn:focus, .btn:active, .btn.active, .btn:active:focus, .btn.active:focus, .open > .btn.dropdown-toggle, .open > .btn.dropdown-toggle:focus,
+	.btn-outline-primary, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .open > .btn-outline-primary.dropdown-toggle, .open > .btn-outline-primary.dropdown-toggle:focus
+	{
+		color: rgba(3, 113, 144, 1);
+		border-color: rgba(3, 113, 144, 1);
+		transition: none;
+		box-shadow: none;
+		background-color: rgba(255, 250, 238, 1);
+		padding: 2px 8px;
+		border-width: 1px;
+		opacity: 1;
+		width: auto;
+		margin: 2px;
+	}
+	.btn:hover, .btn:active:hover, .btn.active:hover, .open > .btn.dropdown-toggle:hover,
+	.btn-outline-primary:hover, .btn-outline-primary:active:hover, .btn-outline-primary.active:hover, .open > .btn-outline-primary.dropdown-toggle:hover
+	{
+		transition: none;
+		color: rgba(2, 92, 117, 1);
+		border-color: rgba(2, 92, 117, 1);
+		box-shadow: none;
+		background-color: rgba(255, 245, 223, 1);
+		opacity: 1;
+	}
+	.btn.btn-fill, .btn.btn-fill:focus, .btn.btn-fill:active, .btn.btn-fill.active, .open > .btn.btn-fill.dropdown-toggle
+	{
+		background-color: rgba(3, 113, 144, 1);
+		box-shadow: none;
+		opacity: 1;
+	}
+	.btn.btn-fill:hover
+	{
+		background-color: rgba(2, 92, 117, 1);
+		box-shadow: none;
+		opacity: 1;
+	}
+	/* End buttons */
+
+	.input-group-addon
+	{
+		border-radius: 0 4px 4px 0;
+		line-height: 36px;
+		border-color: #9a9a9a;
+	}
+	.form-control
+	{
+		border-color: #9a9a9a;
+	}
+	.dropdown-menu, .bootstrap-datetimepicker-widget.dropdown-menu
+	{
+		-webkit-box-shadow: 3px 3px 15px 2px rgba(0,0,0,0.4);
+		-moz-box-shadow: 3px 3px 15px 2px rgba(0,0,0,0.4);
+		box-shadow: 3px 3px 15px 2px rgba(0,0,0,0.4);
+	}
+	.dateLabel
+	{
+		display: block;
+		margin-top: 1em;
+	}
+	.input-group.date
+	{
+		position: static;
+		display: block;
+	}
+	.form-control.datetimepicker, .input-group>.form-control.datetimepicker:not(:first-child), .input-group .form-control.datetimerpicker:last-child
+	{
+		position: static;
+		border-left: 1px solid #9a9a9a;
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+		width: 100%;
+	}
+	.form-group
+	{
+		margin-bottom: 0;
+	}
+	.progress
+	{
+		height: 20px;
+		background-color: #fffaee;
+	}
+	.progress-bar
+	{
+		background-color: #025C75;
+		transition: none;
+		-moz-transition: none;
+		-webkit-transition: none;
+	}
+	#downloadImages
+	{
+		margin: 0;
+	}
+	#clearImages
+	{
+		margin: 0 10px 0 0;
+	}
+	.buttonHolder
+	{
+		display: inline-block;
+	}
+	#downloadButtonHolder
+	{
+		float: right;
+	}
+	#clearButtonHolder
+	{
+		float: right;
+	}
+	h1
+	{
+		font-size: 2.5em;
+		font-weight: normal;
+	}
+	#imagesReturned
+	{
+		padding-bottom: 0;
+	}
+	#imageHolder
+	{
+		padding: 215px 0 0;
+		position: relative;
+		z-index: 1;
+	}
+	#buttons
+	{
+		padding: 15px;
+	}
+	.singleImageHolder .imageTextHolder
+	{
+		display: none;
+	}
+	.singleImageHolder
+	{
+		display: inline-block;
+	}
+	.singleImageHolder > a
+	{
+		display: block;
+	}
+	#colHolder
+	{
+		display: block;
+		background: #ffffff;
+		width: 100%;
+	}
+	#col1
+	{
+		float: left;
+		width: 20%;
+		height: 100vh;
+		overflow: auto;
+		position: fixed;
+	}
+	#col2
+	{
+		float: left;
+		width: 80%;
+		margin-left: 20%;
+	}
+	.sectionLabel, .configSection, #moreFiltersLabel, #moreFilters
+	{
+		display: inline-block;
+	}
+	.sectionContent, #addlInfoContent
+	{
+		padding: 10px 20px 10px 10px;
+		position: absolute;
+		background: #ffffff;
+		z-index: 20;
+		display: none;
+		-moz-border-radius: 0px 10px 10px 10px;
+		-webkit-border-radius: 0px 10px 10px 10px;
+		border-radius: 0px 10px 10px 10px;
+		-webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.4);
+		-moz-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.4);
+		box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.4);
+		border: 1px solid #666666;
+	}
+	#moreFiltersContent
+	{
+		left: 0;
+		width: calc(100% - 20px);
+		z-index: 20;
+		display: none;
+		padding: 5px 0 0;
+	}
+	#addlInfo
+	{
+		display: inline-block;
+	}
+	.nowrap
+	{
+		white-space: nowrap;
+	}
+	#addlInfoContent
+	{
+		width: 300px;
+	}
+	#colorChooser .sectionContent
+	{
+		width: 205px;
+	}
+	#header
+	{
+		position: fixed;
+		width: 100%;
+		top: 0;
+		padding-bottom: 15px;
+	}
+	#configHeader
+	{
+		padding-left: 15px;
+	}
+	#imageSizeChooser
+	{
+		display: inline-block;
+	}
+	#enableCookiesBox, #enableCookiesBox .form-check
+	{
+		display: inline-block;
+	}
+	#enableCookiesBox
+	{
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+	.form-check #enableCookiesLabel .form-check-sign::before, .form-check #enableCookiesLabel .form-check-sign::after
+	{
+		top: 1px;
+		font-size: 1rem;
+	}
+	.form-check #enableCookiesLabel
+	{
+		padding-left: 1.5rem;
+		font-size: 0.75rem;
+	}
+	
+}

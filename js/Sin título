@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Randm Flickr Pickr</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link href="js/jquery-ui.min.css" rel="stylesheet">
+<link href="js/jquery-ui.structure.min.css" rel="stylesheet">
+<link href="js/jquery-ui.theme.min.css" rel="stylesheet">
+<link href="css/gsdk.css" rel="stylesheet" />   
+<link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="css/style2.css" rel="stylesheet">
+<link href="css/2col.css" rel="stylesheet" id="imageDisplaySize">
+</head>
+
+<body>
+	<div class="main">
+	<div id="container">
+		<div id="header">
+			<div id="pageTitle">
+				<h1>Randm Flickr Pickr</h1>
+			</div>
+			<form id="generateForm" action="#">
+				<div id="configHeader">
+					<div id="imageNumbersChooser" class="configSection">
+						<div class="sectionLabel btn" aria-haspopup="true" aria-expanded="false" id="imageNumbersChooserButton"><div class="labelText">How Many: 10</div> <i class="fas fa-caret-down"></i></div>
+						<div class="sectionContent form-group" aria-labelledby="imageNumbersChooserButton">
+							<div class="nowrap form-check-radio">
+								<label for="num10" class="form-check-label active"><input type="radio" id="num10" name="numImages" checked="checked" value="10" class="form-check-input"> 10 Images<span class="form-check-sign"></span></label>
+							</div>
+							<div class="nowrap form-check-radio">
+								<label for="num25" class="form-check-label"><input type="radio" id="num25" name="numImages" value="25" class="form-check-input"> 25 Images<span class="form-check-sign"></span></label>
+							</div>
+							<div class="nowrap form-check-radio">
+								<label for="numX" class="form-check-label"><input type="radio" id="numX" name="numImages" value="X" class="form-check-input"> <input type="text" maxlength="3" size="3" placeholder="100" id="numImagesBox" class="form-control"> Images (max 100)<span class="form-check-sign withBox"></span></label>
+							</div>
+						</div>
+					</div>
+					<div id="dateTypeChooser" class="configSection">
+						<div class="sectionLabel btn" aria-haspopup="true" aria-expanded="false" id="dateTypeChooserButton"><div class="labelText">Dates: Random</div> <i class="fas fa-caret-down"></i></div>
+						<div class="sectionContent" aria-labelledby="dateTypeChooserButton">
+							<div class="nowrap form-check-radio">
+								<label for="randomDate" class="form-check-label active"><input type="radio" id="randomDate" name="dateType" checked="checked" value="random" class="form-check-input"> Use Random Dates<span class="form-check-sign"></span></label>
+							</div>
+							<div class="nowrap form-check-radio last">
+								<label for="chooseDate" class="form-check-label"><input type="radio" id="chooseDate" name="dateType" value="choose" data-toggle="radio" class="form-check-input"> Choose Own Dates<span class="form-check-sign"></span></label>
+							</div>
+							<div id="dateChooser">
+								<div class="form-group">
+									<div class="input-group date">
+										<label for="startDateTimeBox" class="dateLabel">Start Date:</label>
+										<input type="text" id="startDateTimeBox" class="form-control datetimepicker" placeholder="01/01/2001 12:00 AM" />
+									</div>
+									<div class="input-group date">
+										<label for="endDateTimeBox" class="dateLabel">End Date:</label>
+										<input type="text" id="endDateTimeBox" class="form-control datetimepicker" placeholder="01/01/2001 1:00 AM" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="minSizeChooser" class="configSection">
+						<div class="sectionLabel btn" aria-haspopup="true" aria-expanded="false" id="sizeChooserButton"><div class="labelText">Minimum Size: Small</div> <i class="fas fa-caret-down"></i></div>
+						<div class="sectionContent form-group" aria-labelledby="sizeChooserButton">
+							<div class="nowrap form-check-radio">
+								<label for="minSizeSmall" class="form-check-label active"><input type="radio" id="minSizeSmall" name="minSize" value="small" checked="checked" class="form-check-input"> Small (all sizes)<span class="form-check-sign"></span></label>
+							</div>
+							<div class="nowrap form-check-radio">
+								<label for="minSizeMedium" class="form-check-label"><input type="radio" id="minSizeMedium" name="minSize" value="medium" class="form-check-input"> Medium (640)<span class="form-check-sign"></span></label>
+							</div>
+							<div class="nowrap form-check-radio">
+								<label for="minSizeLarge" class="form-check-label"><input type="radio" id="minSizeLarge" name="minSize" value="large" class="form-check-input"> Large (1024)<span class="form-check-sign"></span></label>
+							</div>
+							<div class="nowrap form-check-radio">
+								<label for="minSizeCustom" class="form-check-label"><input type="radio" id="minSizeCustom" name="minSize" value="custom" class="form-check-input"> Custom<span class="form-check-sign"></span></label>
+							</div>
+							<div id="customSizeSection">
+								<div class="nowrap"><input type="text" id="sizeWidthBox" placeholder="0" size="5" class="form-control"><label for="sizeWidthBox"> px wide</label></div>
+								<div class="nowrap"><input type="text" id="sizeHeightBox" placeholder="0" size="5" class="form-control"><label for="sizeHeightBox"> px tall</label></div>
+							</div>
+						</div>
+					</div>
+					<div id="licenseChooser" class="configSection">
+						<div class="sectionLabel btn" aria-haspopup="true" aria-expanded="false" id="licenseChooserButton"><div class="labelText">Licenses...</div> <i class="fas fa-caret-down"></i></div>
+						<div class="sectionContent" aria-labelledby="licenseChooserButton">
+							<div id="licensesBoxes">Loading license types from Flickr...</div>
+						</div>
+					</div>
+					<div id="imageSizeChooser" class="configSection">
+						<div class="sectionLabel btn" aria-haspopup="true" aria-expanded="false" id="imageSizeChooserButton"><div class="labelText">Thumbnails: Large</div> <i class="fas fa-caret-down"></i></div>
+						<div class="sectionContent" aria-labelledby="imageSizeChooserButton">
+							<div class="nowrap form-check-radio">
+								<label for="largeDisplaySize" class="form-check-label active"><input type="radio" id="largeDisplaySize" name="imageSize" checked="checked" value="large" class="form-check-input"> Large<span class="form-check-sign"></span></label>
+							</div>
+							<div class="nowrap form-check-radio">
+								<label for="mediumDisplaySize" class="form-check-label"><input type="radio" id="mediumDisplaySize" name="imageSize" value="medium" class="form-check-input"> Medium<span class="form-check-sign"></span></label>
+							</div>
+							<div class="nowrap form-check-radio">
+								<label for="smallDisplaySize" class="form-check-label"><input type="radio" id="smallDisplaySize" name="imageSize" value="small" class="form-check-input"> Small<span class="form-check-sign"></span></label>
+							</div>
+						</div>
+					</div>
+					<div id="addlInfo" class="configSection">
+						<div class="sectionLabel btn" aria-haspopup="true" aria-expanded="false" id="addlInfoShowHide">About</div>
+						<div id="addlInfoContent" class="sectionContent" aria-labelledby="addlInfoShowHide">
+							<p>Created by Cassandra Gelvin.</p>
+							<p><strong>Why use this?</strong> If you want to select pseudorandom Flickr images (good for writing inspiration). If you want search functionality not in the basic Flickr search, like license granularity and custom minimum dimensions.</p>
+							<p>This tool works by selecting a random period of time, and then looking for images within that period. This works best if there is a relatively even distribution of images over time.</p>
+							<p>Usage rights are the responsibility of the user to verify.</p>
+							<p>Cookies are only used to remember your previous search if you leave the page. On desktop, the button to enable or disable them is in the top right.</p>
+							<p>Questions? Comments? Suggestions? Bugs? <a  id="emailMe">Email me.</a></p>
+						</div>
+					</div>
+					<div id="moreFiltersLabel" class="btn" aria-haspopup="true" aria-expanded="false">More Options <i class="fas fa-caret-down"></i></div>
+					<div id="enableCookiesBox">
+						<div class="nowrap form-check"><label for="enableCookiesCheck" class="form-check-label btn" id="enableCookiesLabel" title="Cookies are only used to remember your search if you leave the page."><input type="checkbox" id="enableCookiesCheck" name="enableCookiesCheck" value="true" class="form-check-input"> Enable cookies<span class="form-check-sign"></span></label></div>
+					</div>
+					<div id="moreFiltersContent" aria-labelledby="moreFiltersLabel">
+						<div id="safeSearchChooser" class="configSection">
+							<div class="sectionLabel btn addlFilter" aria-haspopup="true" aria-expanded="false" id="safeSearchChooserButton"><div class="labelText">Safe Search: Safe</div> <i class="fas fa-caret-down"></i></div>
+							<div class="sectionContent" aria-labelledby="safeSearchChooserButton">
+								<div class="nowrap form-check-radio">
+									<label for="safeSearchSafe" class="form-check-label active"><input type="radio" id="safeSearchSafe" name="safeSearch" checked="checked" value="safe" class="form-check-input"> No Nudity (Safe)<span class="form-check-sign"></span></label>
+								</div>
+								<div class="nowrap form-check-radio">
+									<label for="safeSearchModerate" class="form-check-label"><input type="radio" id="safeSearchModerate" name="safeSearch" value="moderate" class="form-check-input"> Allow Partial Nudity (Moderate)<span class="form-check-sign"></span></label>
+								</div>
+								<div class="nowrap form-check-radio">
+									<label for="safeSearchRestricted" class="form-check-label"><input type="radio" id="safeSearchRestricted" name="safeSearch" value="restricted" class="form-check-input"> Allow Full Nudity (Restricted)<span class="form-check-sign"></span></label>
+								</div>
+							</div>
+						</div>
+						<div id="useridChooser" class="configSection">
+							<div class="sectionLabel btn addlFilter" aria-haspopup="true" aria-expanded="false" id="useridChooserButton"><div class="labelText">User: Any</div> <i class="fas fa-caret-down"></i></div>
+							<div class="sectionContent" aria-labelledby="useridChooserButton">
+								<div class="nowrap form-group">
+									<div><input type="text" id="useridBox" placeholder="Optional Userid" class="form-control"></div>
+									<div><input type="button" value="Clear Userid" id="clearUseridBox" class="btn btn-fill clearButton"></div>
+								</div>
+							</div>
+						</div>
+						<div id="colorChooser" class="configSection">
+							<div class="sectionLabel btn addlFilter" aria-haspopup="true" aria-expanded="false" id="colorChooserButton"><div class="labelText">Colors: Any</div> <i class="fas fa-caret-down"></i></div>
+							<div class="sectionContent" aria-labelledby="colorChooserButton">
+								<div  title="Pale Pink" id="palePinkLink" class="colorLink unchecked" data="b">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Pink" id="pinkLink" class="colorLink unchecked" data="a">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Red" id="redLink" class="colorLink unchecked" data="0">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Dark Orange" id="darkOrangeLink" class="colorLink unchecked" data="1">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Orange" id="orangeLink" class="colorLink unchecked" data="2">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Lemon Yellow" id="lemonYellowLink" class="colorLink unchecked" data="4">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="School Bus Yellow" id="schoolBusYellowLink" class="colorLink unchecked" data="3">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Green" id="greenLink" class="colorLink unchecked" data="5">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Dark Lime Green" id="darkLimeGreenLink" class="colorLink unchecked" data="6">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Cyan" id="cyanLink" class="colorLink unchecked" data="7">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Blue" id="blueLink" class="colorLink unchecked" data="8">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Violet" id="violetLink" class="colorLink unchecked" data="9">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="White" id="whiteLink" class="colorLink unchecked" data="c">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Gray" id="grayLink" class="colorLink unchecked" data="d">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div  title="Black" id="blackLink" class="colorLink unchecked" data="e">
+									<div class="colorBoxCheck"><i class="fas fa-times"></i></div>
+									<div class="colorBoxEmpty">&nbsp;</div>
+								</div>
+								<div id="clearColorsHolder">
+									<input type="button" id="clearColors" value="Clear Color Choices" class="btn btn-fill clearButton">
+								</div>
+							</div>
+						</div>
+						<div id="styleChooser" class="configSection">
+							<div class="sectionLabel btn addlFilter" aria-haspopup="true" aria-expanded="false" id="styleChooserButton"><div class="labelText">Styles: Any</div> <i class="fas fa-caret-down"></i></div>
+							<div class="sectionContent" aria-labelledby="styleChooserButton">
+								<div id="stylesBoxes">
+									<div class="nowrap form-check"><label for="style-blackandwhite" class="form-check-label"><input type="checkbox" id="style-blackandwhite" value="blackandwhite" data="blackandwhite" class="form-check-input"> Black and White<span class="form-check-sign"></span></label></div>
+									<div class="nowrap form-check"><label for="style-depthoffield" class="form-check-label"><input type="checkbox" id="style-depthoffield" value="depthoffield" data="depthoffield" class="form-check-input"> Depth of Field<span class="form-check-sign"></span></label></div>
+									<div class="nowrap form-check"><label for="style-minimalism" class="form-check-label"><input type="checkbox" id="style-minimalism" value="minimalism" data="minimalism" class="form-check-input"> Minimalism<span class="form-check-sign"></span></label></div>
+									<div class="nowrap form-check"><label for="style-pattern" class="form-check-label"><input type="checkbox" id="style-pattern" value="pattern" data="pattern" class="form-check-input"> Pattern<span class="form-check-sign"></span></label></div>
+								</div>
+							</div>
+						</div>
+						<div id="orientationChooser" class="configSection">
+							<div class="sectionLabel btn addlFilter" aria-haspopup="true" aria-expanded="false" id="orientationChooserButton"><div class="labelText">Orientations: All</div> <i class="fas fa-caret-down"></i></div>
+							<div class="sectionContent" aria-labelledby="orientationChooserButton">
+								<div id="orientationsBoxes">
+									<div class="nowrap form-check"><label for="ori-landscape" class="form-check-label"><input type="checkbox" id="ori-landscape" value="landscape" data="landscape" class="form-check-input"> Landscape<span class="form-check-sign"></span></label></div>
+									<div class="nowrap form-check"><label for="ori-portrait" class="form-check-label"><input type="checkbox" id="ori-portrait" value="portrait" data="portrait" class="form-check-input"> Portrait<span class="form-check-sign"></span></label></div>
+									<div class="nowrap form-check"><label for="ori-square" class="form-check-label"><input type="checkbox" id="ori-square" value="square" data="square" class="form-check-input"> Square<span class="form-check-sign"></span></label></div>
+									<div class="nowrap form-check"><label for="ori-panorama" class="form-check-label"><input type="checkbox" id="ori-panorama" value="panorama" data="panorama" class="form-check-input"> Panorama<span class="form-check-sign"></span></label></div>
+								</div>
+							</div>
+						</div>
+						<div id="mediaTypeChooser" class="configSection">
+							<div class="sectionLabel btn addlFilter" aria-haspopup="true" aria-expanded="false" id="mediaTypeChooserButton"><div class="labelText">Media: Photos and Videos</div> <i class="fas fa-caret-down"></i></div>
+							<div class="sectionContent" aria-labelledby="mediaTypeChooserButton">
+								<div class="nowrap form-check-radio"><label for="media-all" class="form-check-label active"><input type="radio" id="media-all" name="mediaType" value="all" checked="checked" class="form-check-input"> Photos and Videos<span class="form-check-sign"></span></label></div>
+								<div class="nowrap form-check-radio"><label for="media-photos" class="form-check-label"><input type="radio" id="media-photos" name="mediaType" value="photos" class="form-check-input"> Photos Only<span class="form-check-sign"></span></label></div>
+								<div class="nowrap form-check-radio"><label for="media-videos" class="form-check-label"><input type="radio" id="media-videos" name="mediaType" value="videos" class="form-check-input"> Videos Only<span class="form-check-sign"></span></label></div>
+							</div>
+						</div>
+						<div id="selectionTypeChooser" class="configSection">
+							<div class="sectionLabel btn addlFilter" aria-haspopup="true" aria-expanded="false" id="selectionTypeChooserButton"><div class="labelText">Choose: Randomly</div> <i class="fas fa-caret-down"></i></div>
+							<div class="sectionContent" aria-labelledby="selectionTypeChooserButton">
+								<div class="nowrap form-check-radio"><label for="selectRandom" class="form-check-label active"><input type="radio" id="selectRandom" name="selectionType" checked="checked" value="random" class="form-check-input"> Random Images<span class="form-check-sign"></span></label></div>
+								<div class="nowrap form-check-radio"><label for="selectFirst" class="form-check-label"><input type="radio" id="selectFirst" name="selectionType" value="first" class="form-check-input"> First Available Images<span class="form-check-sign"></span></label></div>
+							</div>
+						</div>
+						<div id="textTagChooser" class="configSection">
+							<div class="sectionLabel btn addlFilter" aria-haspopup="true" aria-expanded="false" id="textTagChooserButton"><div class="labelText">Text: None</div> <i class="fas fa-caret-down"></i></div>
+							<div class="sectionContent" aria-labelledby="textTagChooserButton">
+								<div class="nowrap form-group">
+									<div><input type="text" id="textTagBox" placeholder="Optional Text or Tag" class="form-control"></div>
+									<div class="nowrap"><input type="button" value="Random Word" id="randomTextTag" class="btn btn-fill"> <input type="button" value="Clear Box" id="clearTextTagBox" class="btn btn-fill clearButton"></div>
+								</div>
+							</div>
+						</div>
+					</div><!-- end #moreFiltersContent -->
+				</div><!-- end #configHeader -->
+				</form>
+			<div id="buttons">
+				<div class="buttonHolder">
+					<div id="getImages" class="btn btn-fill">Get Images</div>
+				</div>
+				<div class="buttonHolder">
+					<div id="cancelSearch" class="btn btn-fill disabled clearButton">Stop Getting Images</div>
+				</div>
+				<div class="buttonHolder" id="downloadButtonHolder">
+					<div id="downloadImages" class="btn btn-fill">Show All Displayed Images in Full Size</div>
+				</div>
+				<div class="buttonHolder" id="clearButtonHolder">
+					<div id="clearImages" class="btn btn-fill clearButton">Clear Images</div>
+				</div>
+			</div>
+			<div id="imagesReturned">
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">No images requested.</div>
+				</div>
+			</div>
+		</div><!-- end #header -->
+		<div id="imageHolder">
+			<div id="messageHolder"></div>
+			<div id="images">
+			</div>
+		</div>
+	</div><!-- end #container -->
+	</div><!-- end #main -->
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+<script src="js/gsdk-bootstrapswitch.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/get-shit-done.js"></script>
+<script src="js/js.cookie.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/key-polyfill.js"></script>
+<script src="js/search2.js"></script>
+</html>

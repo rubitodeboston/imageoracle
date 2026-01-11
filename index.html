@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Image Oracle</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link href="js/jquery-ui.min.css" rel="stylesheet">
+  <link href="js/jquery-ui.structure.min.css" rel="stylesheet">
+  <link href="js/jquery-ui.theme.min.css" rel="stylesheet">
+  <link href="css/gsdk.css" rel="stylesheet">
+  <link href="css/style2.css" rel="stylesheet">
+  <link href="css/2col.css" rel="stylesheet" id="imageDisplaySize">
+  <link href="css/minimal.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="main">
+    <div id="container">
+
+      <div id="header">
+
+        <!-- Centered prompt UI -->
+        <div id="oracleUI">
+          <div id="oracleLine">
+            <span class="oracleText">what does</span>
+
+            <input id="textTagBox" type="text" placeholder="..." autocomplete="off">
+
+            <span class="oracleText">mean (?).</span>
+
+            <span class="oracleText">answer in</span>
+
+            <!-- IMPORTANT: this is the SAME id the original tool expects -->
+            <input id="numImagesBox" type="number" min="1" max="100" value="25" inputmode="numeric">
+
+            <span class="oracleText">images</span>
+          </div>
+
+          <div id="oracleButtons">
+            <div id="getImages" class="btn btn-fill">Generate</div>
+            <div id="clearImages" class="btn btn-fill clearButton">I changed my mind</div>
+          </div>
+        </div>
+
+        <!-- Keep required config in DOM for search2.js -->
+        <form id="generateForm" action="#" style="display:none">
+          <div id="configHeader">
+
+            <!-- Licenses container (JS populates this) -->
+            <div id="licenseChooser" class="configSection">
+              <div class="sectionLabel btn" id="licenseChooserButton"><div class="labelText">Licenses</div></div>
+              <div class="sectionContent" aria-labelledby="licenseChooserButton">
+                <div id="licensesBoxes"></div>
+              </div>
+            </div>
+
+            <!-- Orientations (check all by default) -->
+            <div id="orientationChooser" class="configSection">
+              <div class="sectionLabel btn" id="orientationChooserButton"><div class="labelText">Orientations</div></div>
+              <div class="sectionContent" aria-labelledby="orientationChooserButton">
+                <div id="orientationsBoxes">
+                  <label><input type="checkbox" id="ori-landscape" value="landscape" data="landscape" checked> Landscape</label>
+                  <label><input type="checkbox" id="ori-portrait" value="portrait" data="portrait" checked> Portrait</label>
+                  <label><input type="checkbox" id="ori-square" value="square" data="square" checked> Square</label>
+                  <label><input type="checkbox" id="ori-panorama" value="panorama" data="panorama" checked> Panorama</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- SafeSearch -->
+            <div id="safeSearchChooser" class="configSection">
+              <input type="radio" id="safeSearchSafe" name="safeSearch" value="safe" checked>
+              <input type="radio" id="safeSearchModerate" name="safeSearch" value="moderate">
+              <input type="radio" id="safeSearchRestricted" name="safeSearch" value="restricted">
+            </div>
+
+            <!-- Media type -->
+            <div id="mediaTypeChooser" class="configSection">
+              <input type="radio" id="media-all" name="mediaType" value="all" checked>
+              <input type="radio" id="media-photos" name="mediaType" value="photos">
+              <input type="radio" id="media-videos" name="mediaType" value="videos">
+            </div>
+
+            <!-- Selection type -->
+            <div id="selectionTypeChooser" class="configSection">
+              <input type="radio" id="selectRandom" name="selectionType" value="random" checked>
+              <input type="radio" id="selectFirst" name="selectionType" value="first">
+            </div>
+
+            <!-- Date type -->
+            <div id="dateTypeChooser" class="configSection">
+              <input type="radio" id="randomDate" name="dateType" value="random" checked>
+              <input type="radio" id="chooseDate" name="dateType" value="choose">
+              <input type="text" id="startDateTimeBox">
+              <input type="text" id="endDateTimeBox">
+            </div>
+
+            <!-- Min size -->
+            <div id="minSizeChooser" class="configSection">
+              <input type="radio" id="minSizeSmall" name="minSize" value="small" checked>
+              <input type="radio" id="minSizeMedium" name="minSize" value="medium">
+              <input type="radio" id="minSizeLarge" name="minSize" value="large">
+              <input type="radio" id="minSizeCustom" name="minSize" value="custom">
+              <input type="text" id="sizeWidthBox">
+              <input type="text" id="sizeHeightBox">
+              <div id="customSizeSection"></div>
+            </div>
+
+            <!-- How many images: FORCE custom (numX) so #numImagesBox is used -->
+            <div id="imageNumbersChooser" class="configSection">
+              <input type="radio" id="num10" name="numImages" value="10">
+              <input type="radio" id="num25" name="numImages" value="25">
+              <input type="radio" id="numX" name="numImages" value="X" checked>
+              <!-- #numImagesBox exists above (visible), but JS expects it too -->
+            </div>
+
+            <!-- Thumbnail size -->
+            <div id="imageSizeChooser" class="configSection">
+              <input type="radio" id="largeDisplaySize" name="imageSize" value="large" checked>
+              <input type="radio" id="mediumDisplaySize" name="imageSize" value="medium">
+              <input type="radio" id="smallDisplaySize" name="imageSize" value="small">
+            </div>
+
+            <!-- Optional -->
+            <div id="useridChooser" class="configSection">
+              <input type="text" id="useridBox" value="">
+            </div>
+
+            <div id="messageHolder"></div>
+          </div>
+        </form>
+
+        <div id="imagesReturned" style="display:none">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+              No images requested.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="imageHolder">
+        <div id="images"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+  <script src="js/gsdk-bootstrapswitch.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <script src="js/get-shit-done.js"></script>
+  <script src="js/js.cookie.js"></script>
+  <script src="js/masonry.pkgd.min.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/key-polyfill.js"></script>
+  <script src="js/search2.js"></script>
+
+  <!-- Enter triggers Generate -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const prompt = document.getElementById("textTagBox");
+      const btn = document.getElementById("getImages");
+      if (prompt && btn) {
+        prompt.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") btn.click();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
